@@ -36,6 +36,154 @@
         the movie rating
                 <li>Allow users to create a “To Watch” list in addition to their “Favorite Movies” list
             </ul>
+            <h2>API Endpoints</h2>
+            <table>
+                <tr>
+                    <th>Business Logic</th>
+                    <th>Endpoint URL</th>
+                    <th>HTTP Method</th>
+                    <th>Query Parameters</th>
+                    <th>Request body data format</th>
+                    <th>Response body data format</th>
+                </tr>
+                <tr>
+                    <td>Get Movies</td>
+                    <td>/movies</td>
+                    <td>GET</td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>[
+                            ...
+                            {
+                                "Title": "The Fountain",
+                                "Description": "Description 1",
+                                "Genre": {
+                                    "Name": "Drama",
+                                    "Description": "Description Genre Drama"
+                                },
+                                "Director": {
+                                    "Name": "Director 1",
+                                    "Bio": "Bio Director 1",
+                                    "Birth": 1969
+                                }
+                            }
+                            ...
+                        ]
+                    </td>
+                </tr>
+                <tr>
+                    <td>Get Movie by Title</td>
+                    <td>/movies/:title</td>
+                    <td>GET</td>
+                    <td>:title as Movie Title</td>
+                    <td>-</td>
+                    <td>
+                        {
+                            "Title": "The Fountain",
+                            "Description": "Description 1",
+                            "Genre": {
+                                "Name": "Drama",
+                                "Description": "Description Genre Drama"
+                            },
+                            "Director": {
+                                "Name": "Director 1",
+                                "Bio": "Bio Director 1",
+                                "Birth": 1969
+                            }
+                        }
+                    </td>
+                </tr>
+                <tr>
+                    <td>Get Genre by Name</td>
+                    <td>/movies/genre/:genreName</td>
+                    <td>GET</td>
+                    <td>:genreName as Name of the Genre</td>
+                    <td>-</td>
+                    <td>
+                        {
+                            "Name": "Drama",
+                            "Description": "Description Genre Drama"
+                        }
+                    </td>
+                </tr>
+                <tr>
+                    <td>Get Director by Name</td>
+                    <td>/movies/directors/:directorName</td>
+                    <td>GET</td>
+                    <td>:directorName as Name of the Director</td>
+                    <td>-</td>
+                    <td>
+                        {
+                            "Name": "Director 4",
+                            "Bio": "Bio Director 4",
+                            "Birth": 1981
+                        }
+                    </td>
+                </tr>
+                <tr>
+                    <td>Create User</td>
+                    <td>/users</td>
+                    <td>POST</td>
+                    <td>-</td>
+                    <td>
+                        {
+                            "name": "Mats",
+                            "favoriteMovies": "Batman"
+                        }
+                    </td>
+                    <td>
+                        {
+                            "name": "Mats",
+                            "favoriteMovies": "Batman",
+                            "id": "99b179db-33e2-48cd-b018-10d5ec142463"
+                        }
+                    </td>
+                </tr>
+                <tr>
+                    <td>Update User</td>
+                    <td>/users/:id</td>
+                    <td>PUT</td>
+                    <td>:id as the specific ID of the user</td>
+                    <td>
+                        {
+                            "name": "Joe Updated",
+                            "favoriteMovies": "The Fountain",
+                            "id": 2
+                        }
+                    </td>
+                    <td>
+                        {
+                            "id": 2,
+                            "name": "Joe Updated",
+                            "favoriteMovies": "The Fountain"
+                        }
+                    </td>
+                </tr>
+                <tr>
+                    <td>Add Movie to Favorites</td>
+                    <td>/users/:id/:movieTitle</td>
+                    <td>POST</td>
+                    <td>:id as the ID of the user, :movieTitle as the title to be added to favorites</td>
+                    <td>-</td>
+                    <td>Message that addition to favorites has been successful or user couldn't be found</td>
+                </tr>
+                <tr>
+                    <td>Remove Movie from Favorites</td>
+                    <td>/users/:id/:movieTitle</td>
+                    <td>DELETE</td>
+                    <td>:id as the ID of the user, :movieTitle as the title to be added to favorites</td>
+                    <td>-</td>
+                    <td>Message that removal from favorites has been successful or user couldn't be found</td>
+                </tr>
+                <tr>
+                    <td>Delete User</td>
+                    <td>/users/:id</td>
+                    <td>DELETE</td>
+                    <td>:id as the specific ID of the user</td>
+                    <td>-</td>
+                    <td>Message that removal from database has been successful or user couldn't be found</td>
+                </tr>
+            </table>
         </main>
     </body>
 </html>
