@@ -4,6 +4,10 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width" />
         <title>Movie API Documentation</title>
+        <style>
+            table, th, td {border: 1px solid black;}
+            table {border-collapse: collapse;}
+        </style>
     </head>
     <body>
         <header>
@@ -55,17 +59,22 @@
                     <td>[
                             ...
                             {
-                                "Title": "The Fountain",
-                                "Description": "Description 1",
                                 "Genre": {
                                     "Name": "Drama",
-                                    "Description": "Description Genre Drama"
+                                    "Description": "Drama is a category or genre of narrative fiction intended to be more serious than humorous in tone. Drama of this kind is usually qualified with additional terms that specify its particular super-genre, macro-genre, or micro-genre, such as soap opera, police crime drama, political drama, legal drama, historical drama, domestic drama, teen drama, and comedy-drama (dramedy)."
                                 },
                                 "Director": {
-                                    "Name": "Director 1",
-                                    "Bio": "Bio Director 1",
-                                    "Birth": 1969
-                                }
+                                    "Name": "Peter Jackson",
+                                    "Bio": "Peter Jackson made history with The Lord of the Rings trilogy, becoming the first person to direct three major feature films simultaneously.",
+                                    "Birth": "1961",
+                                    "Death": ""
+                                },
+                                "Actors": [],
+                                "_id": "632d88ace53641d825b56c06",
+                                "Title": "The Lord of the Rings: The Fellowship of the Ring",
+                                "Description": "A Hobbit and eight companions set out on a journey to destroy the powerful One Ring and save Middle-earth from the Dark Lord Sauron.",
+                                "ImagePath": "thelordoftheringsthefellowshipofthering.png",
+                                "Featured": true
                             }
                             ...
                         ]
@@ -73,23 +82,28 @@
                 </tr>
                 <tr>
                     <td>Get Movie by Title</td>
-                    <td>/movies/:title</td>
+                    <td>/movies/:Title</td>
                     <td>GET</td>
-                    <td>:title as Movie Title</td>
+                    <td>:Title as Movie Title</td>
                     <td>-</td>
                     <td>
                         {
-                            "Title": "The Fountain",
-                            "Description": "Description 1",
                             "Genre": {
                                 "Name": "Drama",
-                                "Description": "Description Genre Drama"
+                                "Description": "Drama is a category or genre of narrative fiction intended to be more serious than humorous in tone. Drama of this kind is usually qualified with additional terms that specify its particular super-genre, macro-genre, or micro-genre, such as soap opera, police crime drama, political drama, legal drama, historical drama, domestic drama, teen drama, and comedy-drama (dramedy)."
                             },
                             "Director": {
-                                "Name": "Director 1",
-                                "Bio": "Bio Director 1",
-                                "Birth": 1969
-                            }
+                                "Name": "Peter Jackson",
+                                "Bio": "Peter Jackson made history with The Lord of the Rings trilogy, becoming the first person to direct three major feature films simultaneously.",
+                                "Birth": "1961",
+                                "Death": ""
+                            },
+                            "Actors": [],
+                            "_id": "632d88ace53641d825b56c06",
+                            "Title": "The Lord of the Rings: The Fellowship of the Ring",
+                            "Description": "A Hobbit and eight companions set out on a journey to destroy the powerful One Ring and save Middle-earth from the Dark Lord Sauron.",
+                            "ImagePath": "thelordoftheringsthefellowshipofthering.png",
+                            "Featured": true
                         }
                     </td>
                 </tr>
@@ -102,7 +116,7 @@
                     <td>
                         {
                             "Name": "Drama",
-                            "Description": "Description Genre Drama"
+                            "Description": "Drama is a category or genre of narrative fiction intended to be more serious than humorous in tone. Drama of this kind is usually qualified with additional terms that specify its particular super-genre, macro-genre, or micro-genre, such as soap opera, police crime drama, political drama, legal drama, historical drama, domestic drama, teen drama, and comedy-drama (dramedy)."
                         }
                     </td>
                 </tr>
@@ -114,9 +128,10 @@
                     <td>-</td>
                     <td>
                         {
-                            "Name": "Director 4",
-                            "Bio": "Bio Director 4",
-                            "Birth": 1981
+                            "Name": "Peter Jackson",
+                            "Bio": "Peter Jackson made history with The Lord of the Rings trilogy, becoming the first person to direct three major feature films simultaneously.",
+                            "Birth": "1961",
+                            "Death": ""
                         }
                     </td>
                 </tr>
@@ -127,59 +142,92 @@
                     <td>-</td>
                     <td>
                         {
-                            "name": "Mats",
-                            "favoriteMovies": "Batman"
+                            "Username": "Testuser1",
+                            "Password": "Testpassword1",
+                            "Email": "testuser1@gmail.com",
+                            "Birthday": "09/02/55"
                         }
                     </td>
                     <td>
                         {
-                            "name": "Mats",
-                            "favoriteMovies": "Batman",
-                            "id": "99b179db-33e2-48cd-b018-10d5ec142463"
+                            "Username": "Testuser1",
+                            "Password": "Testpassword1",
+                            "Email": "testuser1@gmail.com",
+                            "Birthday": "1955-09-01T23:00:00.000Z",
+                            "FavoriteMovies": [],
+                            "_id": "6331b33ab9721858f9eec1ee",
+                            "__v": 0
                         }
                     </td>
                 </tr>
                 <tr>
                     <td>Update User</td>
-                    <td>/users/:id</td>
+                    <td>/users/:Username</td>
                     <td>PUT</td>
-                    <td>:id as the specific ID of the user</td>
+                    <td>:Username as the name of the user</td>
                     <td>
                         {
-                            "name": "Joe Updated",
-                            "favoriteMovies": "The Fountain",
-                            "id": 2
+                            "Username": "Testuser1",
+                            "Password": "Testpassword2",
+                            "Email": "testuser1@gmail.com",
+                            "Birthday": "09/02/55"
                         }
                     </td>
                     <td>
                         {
-                            "id": 2,
-                            "name": "Joe Updated",
-                            "favoriteMovies": "The Fountain"
+                            "_id": "6331b33ab9721858f9eec1ee",
+                            "Username": "Testuser1",
+                            "Password": "Testpassword2",
+                            "Email": "testuser1@gmail.com",
+                            "Birthday": "1955-09-01T23:00:00.000Z",
+                            "FavoriteMovies": [],
+                            "__v": 0
                         }
                     </td>
                 </tr>
                 <tr>
                     <td>Add Movie to Favorites</td>
-                    <td>/users/:id/:movieTitle</td>
+                    <td>/users/:Username/movies/:MovieID</td>
                     <td>POST</td>
-                    <td>:id as the ID of the user, :movieTitle as the title to be added to favorites</td>
+                    <td>:MovieID as the ID of the movie to be added, :Username as the name of the user</td>
                     <td>-</td>
-                    <td>Message that addition to favorites has been successful or user couldn't be found</td>
+                    <td>
+                        {
+                            "_id": "63317ede42ebead16370ad78",
+                            "Username": "Testuser1",
+                            "Password": "Testpassword1",
+                            "Email": "testuser1@gmail.com",
+                            "Birthday": "1955-09-01T23:00:00.000Z",
+                            "FavoriteMovies": [
+                                "632d88ace53641d825b56c06"
+                            ],
+                            "__v": 0
+                        }
+                    </td>
                 </tr>
                 <tr>
                     <td>Remove Movie from Favorites</td>
-                    <td>/users/:id/:movieTitle</td>
+                    <td>/users/:Username/movies/:MovieID</td>
                     <td>DELETE</td>
-                    <td>:id as the ID of the user, :movieTitle as the title to be added to favorites</td>
+                    <td>:MovieID as the ID of the movie to be added, :Username as the name of the user</td>
                     <td>-</td>
-                    <td>Message that removal from favorites has been successful or user couldn't be found</td>
+                    <td>
+                        {
+                            "_id": "6331b33ab9721858f9eec1ee",
+                            "Username": "Testuser1",
+                            "Password": "Testpassword2",
+                            "Email": "testuser1@gmail.com",
+                            "Birthday": "1955-09-01T23:00:00.000Z",
+                            "FavoriteMovies": [],
+                            "__v": 0
+                        }
+                    </td>
                 </tr>
                 <tr>
                     <td>Delete User</td>
-                    <td>/users/:id</td>
+                    <td>/users/:Username</td>
                     <td>DELETE</td>
-                    <td>:id as the specific ID of the user</td>
+                    <td>:Username as name of the user</td>
                     <td>-</td>
                     <td>Message that removal from database has been successful or user couldn't be found</td>
                 </tr>
