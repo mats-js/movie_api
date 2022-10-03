@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width" />
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width">
         <title>Movie API Documentation</title>
         <style>
             table, th, td {border: 1px solid black;}
@@ -51,12 +51,34 @@
                     <th>Response body data format</th>
                 </tr>
                 <tr>
+                    <td>Login User</td>
+                    <td>/login?Username=:Username&Password=:Password</td>
+                    <td>POST</td>
+                    <td>:Username as name and :Password as password of the user</td>
+                    <td>-</td>
+                    <td>
+                        {
+                            "user": {
+                                "_id": "633ab2f9eda0e408290b3c6e",
+                                "Username": "Testuser1",
+                                "Password": "$2b$10$3.rOB0yHNa.AtKTuogxuUOdMF.2aSj77QukD9j5dJEekFjZxfIY/i",
+                                "Email": "testuser1@gmail.com",
+                                "Birthday": "1955-09-02T00:00:00.000Z",
+                                "FavoriteMovies": [],
+                                "__v": 0
+                            },
+                            "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzNhYjJmOWVkYTBlNDA4MjkwYjNjNmUiLCJVc2VybmFtZSI6IlRlc3R1c2VyMSIsIlBhc3N3b3JkIjoiJDJiJDEwJDMuck9CMHlITmEuQXRLVHVvZ3h1VU9kTUYuMmFTajc3UXVrRDlqNWRKRWVrRmpaeGZJWS9pIiwiRW1haWwiOiJ0ZXN0dXNlcjFAZ21haWwuY29tIiwiQmlydGhkYXkiOiIxOTU1LTA5LTAyVDAwOjAwOjAwLjAwMFoiLCJGYXZvcml0ZU1vdmllcyI6W10sIl9fdiI6MCwiaWF0IjoxNjY0NzkxMjk5LCJleHAiOjE2NjUzOTYwOTksInN1YiI6IlRlc3R1c2VyMSJ9.1oiYkKjZe_YKlBQPYsJ7xdfVDFkeQoTdjLi_aJqHjLM"
+                        }
+                    </td>
+                </tr>
+                <tr>
                     <td>Get Movies</td>
                     <td>/movies</td>
                     <td>GET</td>
                     <td>-</td>
-                    <td>-</td>
-                    <td>[
+                    <td>Authorization with bearer token received at endpoint "Login User"</td>
+                    <td>
+                        [
                             ...
                             {
                                 "Genre": {
@@ -85,7 +107,7 @@
                     <td>/movies/:Title</td>
                     <td>GET</td>
                     <td>:Title as Movie Title</td>
-                    <td>-</td>
+                    <td>Authorization with bearer token received at endpoint "Login User"</td>
                     <td>
                         {
                             "Genre": {
@@ -112,7 +134,7 @@
                     <td>/movies/genre/:genreName</td>
                     <td>GET</td>
                     <td>:genreName as Name of the Genre</td>
-                    <td>-</td>
+                    <td>Authorization with bearer token received at endpoint "Login User"</td>
                     <td>
                         {
                             "Name": "Drama",
@@ -125,7 +147,7 @@
                     <td>/movies/directors/:directorName</td>
                     <td>GET</td>
                     <td>:directorName as Name of the Director</td>
-                    <td>-</td>
+                    <td>Authorization with bearer token received at endpoint "Login User"</td>
                     <td>
                         {
                             "Name": "Peter Jackson",
@@ -166,6 +188,7 @@
                     <td>PUT</td>
                     <td>:Username as the name of the user</td>
                     <td>
+                        Authorization with bearer token received at endpoint "Login User". Also:
                         {
                             "Username": "Testuser1",
                             "Password": "Testpassword2",
@@ -177,7 +200,7 @@
                         {
                             "_id": "6331b33ab9721858f9eec1ee",
                             "Username": "Testuser1",
-                            "Password": "Testpassword2",
+                            "Password": "$2b$10$3.rOB0yHNa.AtKTuogxuUOdMF.2aSj77QukD9j5dJFz42wZxfIY/i",
                             "Email": "testuser1@gmail.com",
                             "Birthday": "1955-09-01T23:00:00.000Z",
                             "FavoriteMovies": [],
@@ -190,7 +213,7 @@
                     <td>/users/:Username/movies/:MovieID</td>
                     <td>POST</td>
                     <td>:MovieID as the ID of the movie to be added, :Username as the name of the user</td>
-                    <td>-</td>
+                    <td>Authorization with bearer token received at endpoint "Login User"</td>
                     <td>
                         {
                             "_id": "63317ede42ebead16370ad78",
@@ -210,7 +233,7 @@
                     <td>/users/:Username/movies/:MovieID</td>
                     <td>DELETE</td>
                     <td>:MovieID as the ID of the movie to be added, :Username as the name of the user</td>
-                    <td>-</td>
+                    <td>Authorization with bearer token received at endpoint "Login User"</td>
                     <td>
                         {
                             "_id": "6331b33ab9721858f9eec1ee",
@@ -228,7 +251,7 @@
                     <td>/users/:Username</td>
                     <td>DELETE</td>
                     <td>:Username as name of the user</td>
-                    <td>-</td>
+                    <td>Authorization with bearer token received at endpoint "Login User"</td>
                     <td>Message that removal from database has been successful or user couldn't be found</td>
                 </tr>
             </table>

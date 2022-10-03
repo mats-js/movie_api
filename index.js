@@ -16,6 +16,7 @@ app.use(morgan('common'));
 
 // Import and use CORS but allow all domains to make requests
 const cors = require('cors');
+app.use(express.static('public'));
 app.use(cors());
 
 // Import and use Passport
@@ -31,6 +32,11 @@ require('./passport.js');
 mongoose.connect(process.env.CONNECTION_URI, {
 	useNewUrlParser: true,
 	useUnifiedTopology: true,
+});
+
+// Welcome message
+app.get('/', (req, res) => {
+	res.send('Welcome to my Movie API!');
 });
 
 // CREATE new user
@@ -92,28 +98,36 @@ app.post(
 );
 
 // READ all users (DEPRECATE in the future?)
-app.get('/users', (req, res) => {
-	Users.find()
-		.then((users) => {
-			res.status(201).json(users);
-		})
-		.catch((err) => {
-			console.error(err);
-			res.status(500).send('Error: ' + err);
-		});
-});
+app.get(
+	'/users',
+	passport.authenticate('jwt', { session: false }),
+	(req, res) => {
+		Users.find()
+			.then((users) => {
+				res.status(200).json(users);
+			})
+			.catch((err) => {
+				console.error(err);
+				res.status(500).send('Error: ' + err);
+			});
+	}
+);
 
 // READ a user by username (DEPRECATE in the future?)
-app.get('/users/:Username', (req, res) => {
-	Users.findOne({ Username: req.params.Username })
-		.then((user) => {
-			res.json(user);
-		})
-		.catch((err) => {
-			console.error(err);
-			res.status(500).send('Error: ' + err);
-		});
-});
+app.get(
+	'/users/:Username',
+	passport.authenticate('jwt', { session: false }),
+	(req, res) => {
+		Users.findOne({ Username: req.params.Username })
+			.then((user) => {
+				res.json(user);
+			})
+			.catch((err) => {
+				console.error(err);
+				res.status(500).send('Error: ' + err);
+			});
+	}
+);
 
 // UPDATE user by username
 /* JSON expected in this format:
@@ -143,12 +157,13 @@ app.put(
 			return res.status(422).json({ errors: errors.array() });
 		}
 
+		let hashedPassword = Users.hashPassword(req.body.Password);
 		Users.findOneAndUpdate(
 			{ Username: req.params.Username },
 			{
 				$set: {
 					Username: req.body.Username,
-					Password: req.body.Password,
+					Password: hashedPassword,
 					Email: req.body.Email,
 					Birthday: req.body.Birthday,
 				},
@@ -241,7 +256,7 @@ app.get(
 	(req, res) => {
 		Movies.find()
 			.then((movies) => {
-				res.status(201).json(movies);
+				res.status(200).json(movies);
 			})
 			.catch((err) => {
 				console.error(err);

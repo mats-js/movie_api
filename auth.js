@@ -21,8 +21,8 @@ module.exports = (router) => {
 			{ session: false },
 			(error, user, info) => {
 				if (error || !user) {
-					return res.status(400).json({
-						message: 'Something is not right',
+					return res.status(404).json({
+						message: 'User not found or password incorrect',
 						user: user,
 					});
 				}
