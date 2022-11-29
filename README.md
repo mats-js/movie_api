@@ -12,5 +12,5 @@
   - Allow users to remove a movie from their list of favorites
   - Allow existing users to deregister
 - Technologies used: JavaScript, Node.js, Express, MongoDB, Mongoose
-- Deployed app link: https://mats-js-myflixdb.herokuapp.com/
-- Further documentation: https://mats-js-myflixdb.herokuapp.com/documentation.html
+- Deployed app link: https://mats-js-myflixdb.cyclic.app/
+- Further documentation: https://mats-js-myflixdb.cyclic.app/documentation.html
